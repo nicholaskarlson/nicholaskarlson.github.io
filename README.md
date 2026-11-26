@@ -1,8 +1,14 @@
-# nekpress.ca
+# NEKpress: books by Nicholas Elliott Karlson
 
-The source of the NEKpress site. It lives in the `nicholaskarlson.github.io` repository, and GitHub
-publishes it at https://nicholaskarlson.github.io/ (and at https://nekpress.ca once the domain is
-switched; see `DNS-SWITCH.md`).
+The source of the NEKpress site, published by GitHub at **https://nicholaskarlson.github.io/**.
+That is the site's permanent address: give it to readers, print it in books, and put it on the
+Amazon author page and the Zenodo community.
+
+**Never give this repository a custom domain.** If it had one, every nicholaskarlson.github.io link
+would redirect to that domain, and a lapsed domain would break them all. nekpress.ca can point
+*here* from elsewhere, and if it ever lapses, nothing on this site changes. The address also
+depends on the GitHub username, so don't rename the account. The most permanent pointers of all
+are the Zenodo DOIs, so keep citing those in books too.
 
 There is no WordPress, database or theme. `catalog.toml` lists every title. `build.py` (Python
 standard library only) checks it, writes the pages into `_site/`, checks what it wrote, and GitHub
@@ -92,7 +98,9 @@ SITE_OK titles=64 shown=58 hidden=6 featured=2 pages=7 amazon_links=75 doi_links
    you made that change.
 4. Open https://nicholaskarlson.github.io/. Also check that
    https://nicholaskarlson.github.io/longitudinal/ still loads. Project sites are not affected.
-5. When you're happy with the site, follow `DNS-SWITCH.md`.
+
+(Done November 26, 2026. If you use the API instead of Settings: `gh api -X PUT
+repos/nicholaskarlson/nicholaskarlson.github.io/pages -f build_type=workflow`.)
 
 A shelf's slug becomes a folder at the root of the site (`/statistics/`), so never give a shelf the
 name of a repository that has its own Pages site, such as `longitudinal`.

@@ -28,7 +28,9 @@
 [site]
 title = "NEKpress"
 author = "Nicholas Elliott Karlson"
-url = "https://nekpress.ca"
+# The permanent address. Canonical links and the sitemap use it. Do not give this repository a
+# custom domain: that would make every github.io link redirect to the domain.
+url = "https://nicholaskarlson.github.io"
 # Every Amazon link is built as https://<amazon>/dp/<ASIN>. KDP ASINs are the same in every
 # Amazon store, so this one line moves the whole site to another store, e.g. "www.amazon.ca".
 amazon = "www.amazon.com"
