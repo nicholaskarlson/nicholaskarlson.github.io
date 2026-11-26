@@ -1,0 +1,749 @@
+# NEKpress catalog: the one file to edit.
+#
+# Every page and every link on the site is generated from this file by build.py.
+# Each title is one [[book]] entry. The fields:
+#
+#   id          short unique name (letters, digits, hyphens); other entries refer to it
+#   title       main title;  subtitle  the part after the colon (optional)
+#   shelf       which page it goes on: one of the [[shelf]] slugs below
+#   group       the heading it sits under on that page (optional; must be one of the shelf's groups)
+#   show        "featured" (its shelf page AND the home page), "listed" (its shelf page; the default),
+#               or "hidden" (kept here as a record, never on the site)
+#   kindle      Kindle ASIN;  paperback  paperback ASIN. The Amazon store is set once, in [site].
+#   doi         a Zenodo DOI for a free edition. Use the concept DOI ("Cite all versions") when known;
+#               mark a version DOI with  version_doi = true  and build.py will list it as a reminder.
+#   doi_label   link text for the DOI on a book's card (default "Free edition")
+#   supplements the id of the book this free record goes with; it then also appears on that book's card
+#   link        link text used on that book's card (for example "Free quick-start guide")
+#   code        companion code repository
+#   number      a small label above the title, such as "Book 3"
+#   author      only for books by other authors (Shakespeare, Dickens, Poe ...)
+#   play, kind  Shakespeare only: the play, and "annotated" or "guide"; the shelf pairs them in one row
+#   blurb       one line under the title (optional)
+#   status      a note to yourself, such as "draft"; never shown
+#   disclaimer  text that must appear on any page that shows this entry
+#
+# To hide a title: show = "hidden". To add one: copy an entry, change it, run  python3 build.py.
+
+[site]
+title = "NEKpress"
+author = "Nicholas Elliott Karlson"
+url = "https://nekpress.ca"
+# Every Amazon link is built as https://<amazon>/dp/<ASIN>. KDP ASINs are the same in every
+# Amazon store, so this one line moves the whole site to another store, e.g. "www.amazon.ca".
+amazon = "www.amazon.com"
+tagline = "Books by Nicholas Elliott Karlson"
+intro = "Statistics and research methods, practical AI, Shakespeare, and annotated classics. The books are on Amazon; the free editions, guides and workbooks are on Zenodo."
+email = "nicholaskarlson@gmail.com"
+github = "https://github.com/nicholaskarlson"
+youtube = "https://www.youtube.com/@nicholaskarlson"
+zenodo = "https://zenodo.org/communities/nekpress"
+orcid = "0000-0001-7241-1587"
+
+# ---------------------------------------------------------------- shelves (one page each)
+# A shelf page is made only if at least one of its titles is shown, and the menu follows this order.
+# A slug must not be the name of a repository that publishes its own Pages site (e.g. "longitudinal").
+
+[[shelf]]
+slug = "statistics"
+title = "Statistics and Research Methods"
+menu = "Statistics"
+intro = "NEKpress Research: Proof-First Guides. Every printed number can be recomputed from public files. The free editions, quick-start guides and workbooks are on Zenodo."
+groups = ["NEKpress Research: Proof-First Guides"]
+free_list = true
+
+[[shelf]]
+slug = "ai"
+title = "Practical AI"
+menu = "Practical AI"
+intro = "NEKpress Practical AI Guides: using AI for writing, study, communication and creative work, with your own judgment in charge."
+
+[[shelf]]
+slug = "shakespeare"
+title = "Shakespeare"
+menu = "Shakespeare"
+intro = "Annotated editions of the plays, and a dictionary, pronunciation and study guide for many of them. The plays are grouped as in the First Folio of 1623."
+layout = "plays"
+groups = ["Comedies", "Histories", "Tragedies", "For readers and book clubs"]
+
+[[shelf]]
+slug = "literature"
+title = "Classic Literature"
+menu = "Literature"
+intro = "Annotated editions of classic stories, and the Dickens Historical Editions of The Pickwick Papers."
+groups = ["Dickens Historical Editions", "Great Literature"]
+
+[[shelf]]
+slug = "code"
+title = "Code and Story Games"
+menu = "Code"
+intro = "Proof-first software books, and the Story Game series of interactive fiction."
+groups = ["The Verifiable Pipeline Series", "The Story Game Series", "Ubuntu Cloud Skills"]
+
+[[shelf]]
+slug = "religion"
+title = "Religious Studies"
+menu = "Religious Studies"
+intro = "Annotated public-domain editions of the Douay–Rheims translation."
+
+[[shelf]]
+slug = "other"
+title = "Other"
+menu = "Other"
+intro = ""
+
+# ================================================================ Statistics and Research Methods
+
+[[book]]
+id = "establishing-facts"
+title = "Establishing Facts"
+subtitle = "Statistics, the Scientific Method, and Your Own Research"
+shelf = "statistics"
+group = "NEKpress Research: Proof-First Guides"
+number = "The big picture"
+blurb = "How science establishes facts, and the part statistics plays. Start here."
+kindle = "B0HQN7SQJR"
+paperback = "B0HQMMVT6V"
+doi = "10.5281/zenodo.23989586"
+version_doi = true
+doi_label = "Free edition"
+code = "https://github.com/nicholaskarlson/facts"
+show = "featured"
+
+[[book]]
+id = "applied"
+title = "Applied Statistics with Python and R"
+subtitle = "From Question to Defensible Result through Reproducible Analysis, Cross-Language Verification, and APA-Style Reporting"
+shelf = "statistics"
+group = "NEKpress Research: Proof-First Guides"
+number = "Book 1"
+blurb = "Code-first foundations, from t tests to regression, in Python with a check in R."
+kindle = "B0H996LF88"
+paperback = "B0H98RBFYL"
+code = "https://github.com/pystatsv1/PyStatsV1"
+
+[[book]]
+id = "jamovi"
+title = "Psychology Research Methods and Statistics by Design with Jamovi"
+subtitle = "From Scientific Questions to APA-Style Results and Reproducible Evidence"
+shelf = "statistics"
+group = "NEKpress Research: Proof-First Guides"
+number = "Book 2"
+blurb = "Research methods and introductory statistics in jamovi: the design comes before the menu."
+kindle = "B0HG9VV1JR"
+paperback = "B0HGB47S6R"
+code = "https://github.com/nicholaskarlson/jamovi-data"
+
+[[book]]
+id = "by-design"
+title = "Psychological Statistics by Design"
+subtitle = "From Research Question to Defensible APA Results with Python, R, and PyStatsV1"
+shelf = "statistics"
+group = "NEKpress Research: Proof-First Guides"
+number = "Book 3"
+blurb = "Decide the claim, the unit and the estimand before the model, across ten worked studies."
+kindle = "B0HCMCKR7X"
+paperback = "B0HCM7R1WV"
+code = "https://github.com/pystatsv1/PyStatsV1"
+
+[[book]]
+id = "causal"
+title = "Causal Reasoning with Statistics"
+subtitle = "Design, Identification, and Reproducible Evidence in Psychology and the Social Sciences"
+shelf = "statistics"
+group = "NEKpress Research: Proof-First Guides"
+number = "Book 4"
+blurb = "Ten worked cases in design and identification, each closing with a claim audit."
+kindle = "B0HKTCRDW5"
+paperback = "B0HKYDL6SS"
+doi = "10.5281/zenodo.22965577"
+version_doi = true
+doi_label = "Free open edition"
+code = "https://github.com/nicholaskarlson/data"
+
+[[book]]
+id = "bayesian"
+title = "Bayesian Reasoning with Statistics"
+subtitle = "Models, Evidence, and Decisions with Python and R"
+shelf = "statistics"
+group = "NEKpress Research: Proof-First Guides"
+number = "Book 5"
+blurb = "Bayesian models, evidence and decisions, with exact, audited computation in Python and R."
+kindle = "B0HDSBQX6W"
+paperback = "B0HLV2BHNZ"
+code = "https://github.com/nicholaskarlson/bayes"
+
+[[book]]
+id = "before-you-hire"
+title = "Before You Hire a Statistician"
+subtitle = "An Honest Guide to Research Analysis, Reproducibility, Consulting Scope, Fees, and Ethical Boundaries"
+shelf = "statistics"
+group = "NEKpress Research: Proof-First Guides"
+number = "Book 6"
+blurb = "Scope, fees, reproducibility and ethics, from the client's chair."
+kindle = "B0H661RV6B"
+paperback = "B0H68H9BF3"
+
+[[book]]
+id = "predictive"
+title = "Predictive Reasoning with Statistics"
+subtitle = "Validation, Calibration, and Reproducible Prediction in Psychology and the Social Sciences"
+shelf = "statistics"
+group = "NEKpress Research: Proof-First Guides"
+number = "Book 7"
+blurb = "Validation and calibration, and why fit is not prediction."
+kindle = "B0HMY9V1LK"
+paperback = "B0HMYF6F91"
+code = "https://github.com/nicholaskarlson/predict"
+
+# ---- free records on Zenodo (no Amazon edition). Each also shows on the card of the book it supplements.
+
+[[book]]
+id = "classroom"
+title = "Establishing Facts in the Classroom"
+subtitle = "A Free Teacher's Guide for AP® Statistics"
+shelf = "statistics"
+blurb = "Eight classroom investigations on one study, for the TI-84 Plus CE."
+doi = "10.5281/zenodo.24391658"
+supplements = "establishing-facts"
+link = "Free teacher's guide for AP® Statistics"
+disclaimer = "AP® is a trademark registered by the College Board, which is not affiliated with, and does not endorse, this site or its products."
+show = "featured"
+
+[[book]]
+id = "guide-jamovi"
+title = "Psychology Research Methods and Statistics by Design with Jamovi"
+subtitle = "A Free Quick-Start Guide"
+shelf = "statistics"
+doi = "10.5281/zenodo.23851753"
+supplements = "jamovi"
+link = "Free quick-start guide"
+
+[[book]]
+id = "workbook-1"
+title = "Psychology Statistics Practice Materials with Jamovi"
+subtitle = "Model Choice, Worked Solutions, and Scientific Evidence"
+shelf = "statistics"
+doi = "10.5281/zenodo.22262048"
+version_doi = true
+supplements = "jamovi"
+link = "Free workbook, Volume 1"
+
+[[book]]
+id = "workbook-2"
+title = "Psychology Statistics Practice Materials with Jamovi, Volume 2"
+subtitle = "Categorical, Rank-Based, Quasi-Experimental, and Single-Case Evidence"
+shelf = "statistics"
+doi = "10.5281/zenodo.22286929"
+version_doi = true
+supplements = "jamovi"
+link = "Free workbook, Volume 2"
+
+[[book]]
+id = "guide-by-design"
+title = "Psychological Statistics by Design"
+subtitle = "A Free Quick-Start Guide"
+shelf = "statistics"
+doi = "10.5281/zenodo.23933324"
+supplements = "by-design"
+link = "Free quick-start guide"
+
+[[book]]
+id = "guide-bayesian"
+title = "Bayesian Reasoning with Statistics"
+subtitle = "A Free Quick-Start Guide"
+shelf = "statistics"
+doi = "10.5281/zenodo.23513025"
+supplements = "bayesian"
+link = "Free quick-start guide"
+
+[[book]]
+id = "guide-before-you-hire"
+title = "Before You Hire a Statistician"
+subtitle = "A Free Quick-Start Guide"
+shelf = "statistics"
+doi = "10.5281/zenodo.23912387"
+supplements = "before-you-hire"
+link = "Free quick-start guide"
+
+[[book]]
+id = "guide-predictive"
+title = "Predictive Reasoning with Statistics"
+subtitle = "A Free Quick-Start Guide"
+shelf = "statistics"
+doi = "10.5281/zenodo.23545881"
+supplements = "predictive"
+link = "Free quick-start guide"
+
+[[book]]
+id = "esdot-manual"
+title = "Using ESDOT for AP Statistics"
+subtitle = "Instructor's Manual"
+shelf = "statistics"
+status = "KDP paperback draft, last modified December 17, 2016"
+show = "hidden"
+
+# ================================================================ Practical AI
+
+[[book]]
+id = "ai-wisely"
+title = "Use AI Wisely — or Get Left Behind"
+subtitle = "A Practical Guide to ChatGPT and Artificial Intelligence for Writers, Teachers, Students, Small Publishers, and Professionals"
+shelf = "ai"
+kindle = "B0GYYX5XGY"
+paperback = "B0H29N5ZPW"
+
+[[book]]
+id = "ai-prompting"
+title = "Prompting Is Thinking"
+subtitle = "A Practical Guide to Asking Better Questions, Giving Clearer Instructions, Revising AI Outputs, and Keeping Human Judgment in Charge"
+shelf = "ai"
+kindle = "B0GX323GCK"
+paperback = "B0H2HQ7S3N"
+
+[[book]]
+id = "ai-emails"
+title = "Better Emails, Clearer Messages, Calmer Replies"
+subtitle = "A Practical Guide to Using ChatGPT and AI for Professional Communication Without Losing Your Voice or Judgment"
+shelf = "ai"
+kindle = "B0H279LWM6"
+paperback = "B0H2LXV7L7"
+
+[[book]]
+id = "ai-students"
+title = "Practical AI for Students and Lifelong Learners"
+subtitle = "How to Study, Research, Practice, and Learn with AI Without Cheating Yourself"
+shelf = "ai"
+kindle = "B0H2LW2XJB"
+paperback = "B0H2P5X7FZ"
+
+[[book]]
+id = "ai-creators"
+title = "Practical AI for Creators, Designers, and Builders"
+subtitle = "How to Use AI for Design, Code, Prototypes, and Creative Work Without Losing Taste or Control"
+shelf = "ai"
+kindle = "B0GXYQV34L"
+paperback = "B0H2TGSR1W"
+
+# ================================================================ Shakespeare (First Folio order)
+# Comedies
+
+[[book]]
+id = "tempest-annotated"
+title = "The Tempest: Annotated Edition"
+author = "William Shakespeare"
+shelf = "shakespeare"
+group = "Comedies"
+play = "The Tempest"
+kind = "annotated"
+paperback = "B0GZNC3VLH"
+
+[[book]]
+id = "errors-annotated"
+title = "The Comedy of Errors: Annotated Edition"
+author = "William Shakespeare"
+shelf = "shakespeare"
+group = "Comedies"
+play = "The Comedy of Errors"
+kind = "annotated"
+paperback = "B0H1RWNJ8H"
+
+[[book]]
+id = "much-ado-annotated"
+title = "Much Ado About Nothing: Annotated Edition"
+author = "William Shakespeare"
+shelf = "shakespeare"
+group = "Comedies"
+play = "Much Ado About Nothing"
+kind = "annotated"
+paperback = "B0GYYQG3KZ"
+
+[[book]]
+id = "much-ado-guide"
+title = "Shakespeare’s Much Ado About Nothing"
+subtitle = "Dictionary, Pronunciation, and Study Guide"
+shelf = "shakespeare"
+group = "Comedies"
+play = "Much Ado About Nothing"
+kind = "guide"
+kindle = "B0H196M35M"
+paperback = "B0H1BRXL26"
+
+[[book]]
+id = "dream-annotated"
+title = "A Midsummer Night’s Dream: Annotated Edition"
+author = "William Shakespeare"
+shelf = "shakespeare"
+group = "Comedies"
+play = "A Midsummer Night’s Dream"
+kind = "annotated"
+paperback = "B0GYXRBSC7"
+
+[[book]]
+id = "dream-guide"
+title = "Shakespeare’s A Midsummer Night’s Dream"
+subtitle = "Dictionary, Pronunciation, and Study Guide"
+shelf = "shakespeare"
+group = "Comedies"
+play = "A Midsummer Night’s Dream"
+kind = "guide"
+kindle = "B0H16DVTLG"
+paperback = "B0H17QWNHX"
+
+[[book]]
+id = "as-you-like-it-annotated"
+title = "As You Like It: Annotated Edition"
+author = "William Shakespeare"
+shelf = "shakespeare"
+group = "Comedies"
+play = "As You Like It"
+kind = "annotated"
+paperback = "B0H1MQGM72"
+
+[[book]]
+id = "as-you-like-it-guide"
+title = "Shakespeare’s As You Like It"
+subtitle = "Dictionary, Pronunciation, and Study Guide"
+shelf = "shakespeare"
+group = "Comedies"
+play = "As You Like It"
+kind = "guide"
+kindle = "B0H1VMRCD6"
+paperback = "B0H1XCD776"
+
+[[book]]
+id = "twelfth-night-annotated"
+title = "Twelfth Night: Annotated Edition"
+author = "William Shakespeare"
+shelf = "shakespeare"
+group = "Comedies"
+play = "Twelfth Night"
+kind = "annotated"
+paperback = "B0GZ4QWFTL"
+
+[[book]]
+id = "twelfth-night-guide"
+title = "Shakespeare’s Twelfth Night"
+subtitle = "Dictionary, Pronunciation, and Study Guide"
+shelf = "shakespeare"
+group = "Comedies"
+play = "Twelfth Night"
+kind = "guide"
+kindle = "B0H1DWN4QM"
+paperback = "B0H1GXXC33"
+
+# Histories
+
+[[book]]
+id = "richard-ii-annotated"
+title = "Richard II: Annotated Edition"
+author = "William Shakespeare"
+shelf = "shakespeare"
+group = "Histories"
+play = "Richard II"
+kind = "annotated"
+paperback = "B0GYJN3Q3Y"
+
+[[book]]
+id = "richard-ii-guide"
+title = "Shakespeare’s Richard II"
+subtitle = "Dictionary, Pronunciation, and Study Guide"
+shelf = "shakespeare"
+group = "Histories"
+play = "Richard II"
+kind = "guide"
+kindle = "B0H1FP6MF9"
+paperback = "B0H1J2ZN47"
+
+[[book]]
+id = "henry-iv-1-annotated"
+title = "Henry IV, Part 1: Annotated Edition"
+author = "William Shakespeare"
+shelf = "shakespeare"
+group = "Histories"
+play = "Henry IV, Part 1"
+kind = "annotated"
+paperback = "B0GYLSPBXF"
+
+[[book]]
+id = "henry-iv-2-annotated"
+title = "Henry IV, Part 2: Annotated Edition"
+author = "William Shakespeare"
+shelf = "shakespeare"
+group = "Histories"
+play = "Henry IV, Part 2"
+kind = "annotated"
+paperback = "B0GYPHWHKS"
+
+[[book]]
+id = "henry-v-annotated"
+title = "Henry V: Annotated Edition"
+author = "William Shakespeare"
+shelf = "shakespeare"
+group = "Histories"
+play = "Henry V"
+kind = "annotated"
+paperback = "B0GYPQ7269"
+
+[[book]]
+id = "richard-iii-annotated"
+title = "Richard III: Annotated Edition"
+author = "William Shakespeare"
+shelf = "shakespeare"
+group = "Histories"
+play = "Richard III"
+kind = "annotated"
+paperback = "B0GZBT52PF"
+
+# Tragedies
+
+[[book]]
+id = "romeo-annotated"
+title = "Romeo and Juliet: Annotated Edition"
+author = "William Shakespeare"
+shelf = "shakespeare"
+group = "Tragedies"
+play = "Romeo and Juliet"
+kind = "annotated"
+paperback = "B0GYSH4S12"
+
+[[book]]
+id = "romeo-guide"
+title = "Shakespeare’s Romeo and Juliet"
+subtitle = "Dictionary, Pronunciation, and Study Guide"
+shelf = "shakespeare"
+group = "Tragedies"
+play = "Romeo and Juliet"
+kind = "guide"
+kindle = "B0H12R818J"
+paperback = "B0H14Z472T"
+
+[[book]]
+id = "julius-caesar-annotated"
+title = "Julius Caesar: Annotated Edition"
+author = "William Shakespeare"
+shelf = "shakespeare"
+group = "Tragedies"
+play = "Julius Caesar"
+kind = "annotated"
+paperback = "B0GZL8HJYR"
+
+[[book]]
+id = "julius-caesar-guide"
+title = "Shakespeare’s Julius Caesar"
+subtitle = "Dictionary, Pronunciation, and Study Guide"
+shelf = "shakespeare"
+group = "Tragedies"
+play = "Julius Caesar"
+kind = "guide"
+kindle = "B0H138S91G"
+paperback = "B0H1593LHT"
+
+[[book]]
+id = "macbeth-annotated"
+title = "Macbeth: Annotated Edition"
+author = "William Shakespeare"
+shelf = "shakespeare"
+group = "Tragedies"
+play = "Macbeth"
+kind = "annotated"
+paperback = "B0GZGBXGJM"
+
+[[book]]
+id = "macbeth-guide"
+title = "Shakespeare’s Macbeth"
+subtitle = "Dictionary, Pronunciation, and Study Guide"
+shelf = "shakespeare"
+group = "Tragedies"
+play = "Macbeth"
+kind = "guide"
+kindle = "B0GZYSB6LG"
+paperback = "B0H11TXGFL"
+
+[[book]]
+id = "hamlet-annotated"
+title = "Hamlet: Annotated Edition"
+author = "William Shakespeare"
+shelf = "shakespeare"
+group = "Tragedies"
+play = "Hamlet"
+kind = "annotated"
+paperback = "B0GZHK9GPC"
+
+[[book]]
+id = "hamlet-guide"
+title = "Shakespeare’s Hamlet"
+subtitle = "Dictionary, Pronunciation, and Study Guide"
+shelf = "shakespeare"
+group = "Tragedies"
+play = "Hamlet"
+kind = "guide"
+kindle = "B0GX312TY6"
+paperback = "B0GZVL8157"
+
+[[book]]
+id = "king-lear-annotated"
+title = "King Lear: Annotated Edition"
+author = "William Shakespeare"
+shelf = "shakespeare"
+group = "Tragedies"
+play = "King Lear"
+kind = "annotated"
+paperback = "B0GZK5PZDY"
+
+[[book]]
+id = "shakespeare-book-club"
+title = "Starting a Shakespeare Book Club"
+subtitle = "A Practical Guide for Readers, Libraries, Students, and Campus Clubs"
+shelf = "shakespeare"
+group = "For readers and book clubs"
+kindle = "B0GZ5KPZ98"
+paperback = "B0GZ7GKYL9"
+
+# ================================================================ Classic Literature
+
+[[book]]
+id = "pickwick-1"
+title = "The Pickwick Papers, Numbers 1 & 2 (Annotated)"
+subtitle = "Volume I of the Dickens Historical Editions"
+author = "Charles Dickens"
+shelf = "literature"
+group = "Dickens Historical Editions"
+paperback = "B0GT1C9KMZ"
+
+[[book]]
+id = "pickwick-2"
+title = "The Pickwick Papers, Number 3 (Annotated)"
+subtitle = "Volume II of the Dickens Historical Editions"
+author = "Charles Dickens"
+shelf = "literature"
+group = "Dickens Historical Editions"
+paperback = "B0GTF66M11"
+
+[[book]]
+id = "pickwick-supplement"
+title = "The Pickwick Papers After Number 3 (Annotated)"
+subtitle = "Dickens Historical Editions Special Supplement"
+author = "Charles Dickens"
+shelf = "literature"
+group = "Dickens Historical Editions"
+paperback = "B0GTMPLZ3C"
+
+[[book]]
+id = "usher"
+title = "The Fall of the House of Usher"
+subtitle = "Annotated Edition"
+author = "Edgar Allan Poe"
+shelf = "literature"
+group = "Great Literature"
+paperback = "B0GRW1WG6K"
+
+[[book]]
+id = "bartleby"
+title = "Bartleby, the Scrivener"
+subtitle = "A Story of Wall-Street (Annotated Edition)"
+author = "Herman Melville"
+shelf = "literature"
+group = "Great Literature"
+paperback = "B0GS59DNJC"
+
+[[book]]
+id = "yellow-wallpaper"
+title = "The Yellow Wallpaper"
+subtitle = "Annotated Edition"
+author = "Charlotte Perkins Gilman"
+shelf = "literature"
+group = "Great Literature"
+paperback = "B0GR5MPGR7"
+status = "KDP shows its series (Great Literature Book Club) as Blocked; the paperback is live"
+
+[[book]]
+id = "love-of-life"
+title = "Love of Life"
+subtitle = "Annotated Edition"
+author = "Jack London"
+shelf = "literature"
+group = "Great Literature"
+paperback = "B0GQS8JKGV"
+status = "KDP shows its series (Great Literature Book Club) as Blocked; the paperback is live"
+
+# ================================================================ Code and Story Games
+
+[[book]]
+id = "pipelines-cloud"
+title = "Proof-First Pipelines in the Cloud"
+subtitle = "Drop-Folder Workflows on Cloud Run—With Event Contracts, Verifiable Deploy Evidence, and Casefile Kits in Go"
+shelf = "code"
+group = "The Verifiable Pipeline Series"
+kindle = "B0GNHRM8J1"
+
+[[book]]
+id = "finance-toolkit"
+title = "The Deterministic Finance Toolkit"
+subtitle = "Reconciliation, Audit Packs, and Report Builders in Go—With Proof-First Patterns and Python Verification Examples"
+shelf = "code"
+group = "The Verifiable Pipeline Series"
+kindle = "B0GMVXMB8Z"
+status = "Kindle live with unpublished changes; paperback is a draft"
+
+[[book]]
+id = "story-game"
+title = "Make Your Own Story Game"
+subtitle = "A Non-Programmer’s Guide to Writing Interactive Fiction in YAML, Running a Proof-First Python Game, and Sharing Story Packs on GitHub"
+shelf = "code"
+group = "The Story Game Series"
+kindle = "B0GQ6FQWVQ"
+
+[[book]]
+id = "night-key"
+title = "The Night Key"
+subtitle = "Book 2 in the Story Game Series"
+shelf = "code"
+group = "The Story Game Series"
+kindle = "B0GSJ17LYD"
+
+[[book]]
+id = "cloud-lab"
+title = "Your First Local Cloud Lab with Ubuntu and Docker"
+subtitle = "A Proof-First Guide to Websites, Containers, Logs, Backups, and Safe Publishing Habits Without a Paid Cloud Account"
+shelf = "code"
+group = "Ubuntu Cloud Skills"
+status = "KDP paperback draft, last modified May 24, 2026"
+show = "hidden"
+
+[[book]]
+id = "education-portal"
+title = "Build Your Own Education Portal with Ubuntu"
+subtitle = "A Proof-First Guide for Creators with GitHub, Docker, Static Sites, Backups, HTTPS, VPS Deployment, and Stripe Sandbox Checkout"
+shelf = "code"
+group = "Ubuntu Cloud Skills"
+status = "KDP paperback draft, last modified June 11, 2026"
+show = "hidden"
+
+# ================================================================ Religious Studies (hidden: readers find these on Amazon)
+
+[[book]]
+id = "douay-rheims-nt"
+title = "The Douay–Rheims New Testament (1582) (Annotated)"
+subtitle = "A Catholic Translation with Data-Driven Study Notes and Computed Chapter Analytics"
+shelf = "religion"
+kindle = "B0GPLR5F75"
+show = "hidden"
+
+[[book]]
+id = "gospel-john"
+title = "The Gospel According to John (1582) (Annotated)"
+subtitle = "Douay–Rheims (Public Domain) with Computed Chapter Notes"
+shelf = "religion"
+paperback = "B0GPNBNR98"
+show = "hidden"
+
+# ================================================================ Other
+
+[[book]]
+id = "world-history"
+title = "World History in Brief with GitHub and LaTeX"
+subtitle = "Version 1.0"
+shelf = "other"
+status = "KDP Kindle draft, last modified November 3, 2023"
+show = "hidden"
